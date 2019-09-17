@@ -101,7 +101,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
             ]
         }
 
-    elif level == 2:
+    elif level == '2':
         district = content["geocodes"][0]["district"]
         city = content["geocodes"][0]["city"]
         township = respond["regeocode"]["addressComponent"]["township"]
