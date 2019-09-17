@@ -95,7 +95,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
         if len(district) == 0:
             dis = ''
         else:
-            dis = district[0]
+            dis = district
         imformation = {
 
             "姓名": name,
