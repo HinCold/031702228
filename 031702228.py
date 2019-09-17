@@ -75,7 +75,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
 
         if city == '':
             city = content["geocodes"][0]["province"]
-        if city == "北京市" or "天津市" or "重庆市" or "上海市":
+        if city == "北京市" or city == "天津市" or city == "重庆市" or city == "上海市":
             province = content["geocodes"][0]["province"][:-1]
         if rt == None:
               township = ''
@@ -161,7 +161,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
         township = respond["regeocode"]["addressComponent"]["township"]
         road = respond["regeocode"]["addressComponent"]["streetNumber"]["street"]
         rd = re.search(r'\d+号', s3)
-        if city == "北京市" or "天津市" or "重庆市" or "上海市":
+        if city == "北京市" or city == "天津市" or city == "重庆市" or city == "上海市":
             province = content["geocodes"][0]["province"][:-1]
         if rd == None:
             doornumber = ''
