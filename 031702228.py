@@ -70,9 +70,12 @@ def togetherrules(s3, level, content, respond, name, telnumber):
         #township doornumber
         city = content["geocodes"][0]["city"]
         township = respond["regeocode"]["addressComponent"]["township"]
+
         rt = re.search(r"." + township, s3)
         district = content["geocodes"][0]["district"]
+
         province = content["geocodes"][0]["province"]
+
         if city == '':
             city = content["geocodes"][0]["province"]
         if city == "北京市" or city == "天津市" or city == "重庆市" or city == "上海市":
@@ -89,6 +92,10 @@ def togetherrules(s3, level, content, respond, name, telnumber):
         else:
             tpos = rt.span()
         s4 = s3[tpos[1]:-1]
+        if len(district) == 0:
+            dis = ''
+        else:
+            dis = district[0]
         imformation = {
 
             "姓名": name,
@@ -97,7 +104,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
 
                 province,
                 city,
-                district,
+                dis,
                 township,
                 s4
             ]
@@ -106,6 +113,7 @@ def togetherrules(s3, level, content, respond, name, telnumber):
     elif level == '2':
         #print(1111111)
         district = content["geocodes"][0]["district"]
+
         city = content["geocodes"][0]["city"]
         township = respond["regeocode"]["addressComponent"]["township"]
         rd = re.search(r'\d+号', s3)
